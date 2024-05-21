@@ -1,6 +1,10 @@
 <script setup>
 import { Flex, Tabs, TabPane, theme, ConfigProvider, Checkbox, Input, InputNumber, Button, Tag } from 'ant-design-vue';
 import { ref } from 'vue';
+import { useRoute, useRouter } from "vue-router"
+
+const route = useRoute()
+const router = useRouter()
 
 const currentTab = ref(1)
 
@@ -11,6 +15,15 @@ const gameConfig = ref({
     timeLimits: 60,
     username: ""
 })
+
+function handleStartOnClick() {
+    if (gameConfig.value.skipIntro) {
+        router.push("/ingame/1")
+    }
+    else {
+        router.push("/intro")
+    }
+}
 </script>
 <template>
     <ConfigProvider :theme="{
@@ -38,7 +51,7 @@ const gameConfig = ref({
                             <div>每轮时间限制（秒）</div>
                             <InputNumber v-model:value="gameConfig.timeLimits" :min="10" :max="120"></InputNumber>
                         </Flex>
-                        <Button type="primary">弟子明白！</Button>
+                        <Button type="primary" @click="handleStartOnClick">弟子明白！</Button>
                     </Flex>
                 </TabPane>
                 <TabPane :key="2" tab="排行榜">

@@ -9,6 +9,16 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    {
+      path: "/ingame/:roundNum",
+      name: "ingame pages",
+      component: ()=>import("../views/InGame.vue")
+    },
+    {
+      path: "/intro",
+      name: "intro",
+      component: ()=>import("../views/Intro.vue")
+    }
     
   ]
 })
