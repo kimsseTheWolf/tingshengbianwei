@@ -14,6 +14,10 @@ const interfaceControl = ref({
 
 const gameConfig = ref(JSON.parse(localStorage.getItem("gameConfig")))
 
+function generateGoal() {
+    
+}
+
 function handleDirectionSelected(direction) {
     console.log(direction)
     interfaceControl.value.showDirectionButtons = false
