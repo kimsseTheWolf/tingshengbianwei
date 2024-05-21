@@ -16,7 +16,12 @@ const gameConfig = ref({
     username: ""
 })
 
+function homepageInit() {
+    localStorage.removeItem("gameConfig")
+}
+
 function handleStartOnClick() {
+    localStorage.setItem("gameConfig", JSON.stringify(gameConfig.value))
     if (gameConfig.value.skipIntro) {
         router.push("/ingame/1")
     }
@@ -24,6 +29,8 @@ function handleStartOnClick() {
         router.push("/intro")
     }
 }
+
+homepageInit()
 </script>
 <template>
     <ConfigProvider :theme="{
