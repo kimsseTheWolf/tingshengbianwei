@@ -16,5 +16,9 @@ export default defineConfig({
   assetsInclude: [
     '**/*.MP3',
     '**/*.mp4',
-  ]
+  ],
+  base: "/tingshengbianwei/",
+  build: {
+    outDir: "docs"
+  }
 })
