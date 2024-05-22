@@ -18,6 +18,11 @@ const router = createRouter({
       path: "/intro",
       name: "intro",
       component: ()=>import("../views/Intro.vue")
+    },
+    {
+      path: "/gameover",
+      name: "gameover",
+      component: ()=>import("../views/GameOver.vue")
     }
     
   ]
