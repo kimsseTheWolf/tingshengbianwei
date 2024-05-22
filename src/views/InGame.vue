@@ -17,6 +17,7 @@ const interfaceControl = ref({
     showDirectionButtons: false,
     showWrongVideo: false,
     showDeathVideo: false,
+    showSuccessVideo: false,
     needCOntinueCountDown: false
 })
 
@@ -137,6 +138,12 @@ function handleVideoEnded() {
     }
 }
 
+function handleSuccessEnded() {
+    router.push("/gameover").then(()=> {
+        nextTick(() => router.go(0))
+    })
+}
+
 function handleTimeIsUp() {
     handleDirectionSelected("giveup")
 }
@@ -149,7 +156,7 @@ function pageInit() {
         router.push("/gameover")
     }
     else if (parseInt(route.params.roundNum) > gameConfig.value.maxRounds) {
-        router.push("/gameover")
+        interfaceControl.value.showSuccessVideo = true
     }
     else {
         generateGoal()
@@ -180,6 +187,9 @@ pageInit()
         </video>
         <video class="hoverVideo" id="failedFinal" autoplay @ended="handleVideoEnded" v-if="interfaceControl.showDeathVideo">
             <source src="/video/failedFinal.mp4" type="video/mp4"></source>
+        </video>
+        <video class="hoverVideo" id="success" autoplay @ended="handleSuccessEnded" v-if="interfaceControl.showSuccessVideo">
+            <source src="/video/success.mp4" type="video/mp4"></source>
         </video>
     </ConfigProvider>
 </template>
