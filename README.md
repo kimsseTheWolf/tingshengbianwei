@@ -1,29 +1,11 @@
-# tingshengbianwei
+# 听声辩位小游戏网页版
 
-This template should help get you started developing with Vue 3 in Vite.
+使用vue+Ant Design Vue开发
 
-## Recommended IDE Setup
+游戏中所有的音视频素材均来自B站。若有侵权我会立即删除。禁止用于商业用途！
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 游戏玩法
+首页可以调整游戏参数，根据游戏内的指示即可！
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+## 问题反馈
+当前此程序还在早期开发阶段！如果你遇到了任何问题，请提交Issue！

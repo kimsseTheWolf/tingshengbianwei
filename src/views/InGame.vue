@@ -3,6 +3,7 @@ import { nextTick, ref } from 'vue';
 import { Flex, ConfigProvider, theme } from 'ant-design-vue';
 import { useRoute, useRouter } from 'vue-router';
 import DirectionButtons from '@/components/DirectionButtons.vue';
+import TImer from '@/components/TImer.vue';
 import router from '@/router';
 
 let audioContext = null
@@ -15,7 +16,8 @@ const route = useRoute()
 const interfaceControl = ref({
     showDirectionButtons: false,
     showWrongVideo: false,
-    showDeathVideo: false
+    showDeathVideo: false,
+    needCOntinueCountDown: false
 })
 
 const gameConfig = ref(JSON.parse(localStorage.getItem("gameConfig")))
@@ -87,6 +89,7 @@ function playAudio() {
 
 function handleDirectionSelected(direction) {
     console.log(direction)
+    interfaceControl.value.needCOntinueCountDown = false
     interfaceControl.value.showDirectionButtons = false
     if (direction == currentDirection.value) {
         console.log("Correct!")
@@ -134,6 +137,10 @@ function handleVideoEnded() {
     }
 }
 
+function handleTimeIsUp() {
+    handleDirectionSelected("giveup")
+}
+
 
 
 
@@ -150,12 +157,14 @@ function pageInit() {
         renderSpacialAudio()
         playAudio()
         interfaceControl.value.showDirectionButtons = true
+        interfaceControl.value.needCOntinueCountDown = true
     }
 }
 
 pageInit()
 </script>
 <template>
+    <TImer :time="gameConfig.timeLimits" :need-continue="interfaceControl.needCOntinueCountDown" @time-is-up="handleTimeIsUp()"></TImer>
     <ConfigProvider :theme="{
         algorithm: theme.darkAlgorithm,
     }">
